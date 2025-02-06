@@ -19,4 +19,17 @@ export class VideoController {
       message: 'Video processing job added to queue',
     };
   }
+
+  @Post('comprocess')
+  async comprocessVideo() {
+
+    await this.videoQueue.add('comprocess', {
+      fileName: 'the-best-video',
+      fileType: 'mp4',
+    });
+
+    return {
+      message: 'Video comprocessing job added to queue',
+    };
+  }
 }
